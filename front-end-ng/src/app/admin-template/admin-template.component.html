@@ -1,0 +1,54 @@
+
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/home">home</button>
+  <button mat-button>profile</button>
+  <button mat-button [matMenuTriggerFor]="menu" >
+    <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+    more
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item>
+      <mat-icon>alarme</mat-icon>
+      X
+    </button>
+    <button mat-menu-item>
+      <mat-icon>alarme</mat-icon>
+      Y
+    </button>
+  </mat-menu>
+  <button mat-raised-button color="accent">login</button>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer opened mode="side">
+    <mat-nav-list>
+      <mat-list-item>
+        <button mat-button (click)="getProducts()">
+          <mat-icon>dashboard</mat-icon>
+          products
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button (click)="getCategories()">
+          <mat-icon>dashboard</mat-icon>
+          categories
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button>
+          <mat-icon>dashboard</mat-icon>
+          dashboard
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="min-height: 600px">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
